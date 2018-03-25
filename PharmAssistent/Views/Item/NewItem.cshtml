@@ -1,0 +1,644 @@
+﻿
+@model PharmAssistent.Models.InventoryModel.Item
+    <link href="~/Content/Gentella CSS/custom.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Gentella CSS/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/Gentella CSS/prettify.min.css" rel="stylesheet" />
+    <link href="~/Content/Gentella CSS/daterangepicker.css" rel="stylesheet" />
+
+
+
+    <div class="right_col" role="main">
+
+        <div class="row"></div>
+        <div class="row  col-md-3"></div>
+
+            <div class="row col-md-6" style="margin-top:100px;">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+                            <div class="x_panel ">
+                                <div class="x_title">
+                                    <h2>New Item </h2>
+                                    <h4>@ViewBag.err</h4>  
+                                    @ViewBag.msg
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li>
+                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#">Settings 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Settings 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="close-link disabled"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <br />
+                                    <div  class="form-horizontal form-label-left">
+                                     @using (Html.BeginForm())
+                                      {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Name">
+                                                Name <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" id="Name" required="required" class="form-control col-md-7 col-xs-12" name="Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                Category <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" id="Categeory" name="Categeory" required="required" class="form-control col-md-7 col-xs-12">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> Manufacture</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select class="form-control" name="ManufacturerID" id="ManufacturerID">
+                                                    <option value="1">Choose option</option>
+                                                    <option value="2">Option one</option>
+                                                    <option value="3">Option two</option>
+                                                    <option value="4">Option three</option>
+                                                    <option value="5">Option four</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> Generic</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select class="form-control" name="DrugGenericNameID" id="DrugGenericNameID">
+                                                    <option value="1">Choose option</option>
+                                                    <option value="2">Option one</option>
+                                                    <option value="3">Option two</option>
+                                                    <option value="4">Option three</option>
+                                                    <option value="5">Option four</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Alert Qty</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="AlertQty" class="form-control col-md-7 col-xs-12" type="text" name="AlertQty">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="Description" class="form-control col-md-7 col-xs-12" type="text" name="Description" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                               Last Updated <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 xdisplay_inputx form-group has-feedback">
+                                                <input type="text" class="form-control has-feedback-left " id="LastUpdated" placeholder="LastUpdated" aria-describedby="inputSuccess2Status" name="LastUpdated">
+                                                <span class="fa fa-calendar-o form-control-feedback left " aria-hidden="true"></span>
+                                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                                <button class="btn btn-primary" type="button">Cancel</button>
+                                                <button class="btn btn-primary" type="reset">Reset</button>
+                                                <input type="submit" class="btn btn-primary" id="btnSubmit" value="Submit" />
+                                            </div>
+                                        </div>
+                                    }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+           </div>
+</div>
+    <div></div>
+<script src="~/Content/Gentella CSS/jquery.min.js"></script>
+<script src="~/Content/Gentella CSS/moment.min.js"></script>
+<script src="~/Content/Gentella CSS/date.js"></script>
+<script src="~/Content/Gentella CSS/daterangepicker.js"></script>
+<script src="~/Content/Scripts/jquery-2.1.4.min.js"></script>
+
+<script src="~/Content/Gentella CSS/prettify.min.js"></script>
+<script src="~/Content/Gentella CSS/custom.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+                   
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("PopulateDrugGenericName")',
+            dataType: 'json',
+            success: function (data) {
+
+                $('#DrugGenericNameID').empty();
+                $('#DrugGenericNameID').append($("<option value='0'>--Select Drug Generic--</option>"));
+                $.each(data, function (key, value) {
+                    $('#DrugGenericNameID').append($("<option></option>").val(value.ID).html(value.GenericName));
+                });
+            },
+            error: function (ex) {
+                //   var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    });
+    $(document).ready(function () {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("PopulateManufacturer")',
+            dataType: 'json',
+            success: function (data) {
+
+                $('#ManufacturerID').empty();
+                $('#ManufacturerID').append($("<option value='0'>--Select Manufacturer--</option>"));
+                $.each(data, function (key, value) {
+                    $('#ManufacturerID').append($("<option></option>").val(value.ID).html(value.ManufacturerName));
+                });
+            },
+            error: function (ex) {
+                //   var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+
+   
+        
+      
+});
+</script>
+
+
+
+
+
+    <div>
+        @*<div class="panel-body" style="">
+                <div class="right_col" role="main">
+                    <div class="">
+                        <div class="page-title">
+                            <div class="title_left">
+                                <h3>Form Elements</h3>
+                            </div>
+
+                            <div class="title_left" style="margin-top:50px">
+                                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search for...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">Go!</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+
+
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="x_panel" style="margin-top:150px">
+                                    <div class="x_title">
+                                        <h2>Form Basic Elements <small>different form elements</small></h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li>
+                                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="#">Settings 1</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Settings 2</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="close-link"><i class="fa fa-close"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <br />
+                                        <form class="form-horizontal form-label-left">
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Default Input</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <input type="text" class="form-control" placeholder="Default Input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Disabled Input </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Read-Only Input</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                    Date Of Birth <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <textarea class="form-control" rows="3" placeholder='rows="3"'></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <input type="password" class="form-control" value="passwordonetwo">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10" />
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                            <div class="ln_solid"></div>
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                                    <button type="button" class="btn btn-primary">Cancel</button>
+                                                    <button type="reset" class="btn btn-primary">Reset</button>
+                                                    <button type="submit" class="btn btn-success">Submit</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-xs-12">
+                                @*<div class="x_panel" style="margin-top:150px">
+                                        <div class="x_title">
+                                            <h2>Form Basic Elements <small>different form elements</small></h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            <a href="#">Settings 1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Settings 2</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <br />
+                                            <form class="form-horizontal form-label-left">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Default Input</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <input type="text" class="form-control" placeholder="Default Input">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Disabled Input </label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Read-Only Input</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Date Of Birth <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <textarea class="form-control" rows="3" placeholder='rows="3"'></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <input type="password" class="form-control" value="passwordonetwo">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <select class="form-control">
+                                                            <option>Choose option</option>
+                                                            <option>Option one</option>
+                                                            <option>Option two</option>
+                                                            <option>Option three</option>
+                                                            <option>Option four</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Custom</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Grouped</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <select class="select2_group form-control"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Multiple</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <select class="select2_multiple form-control" multiple="multiple">
+                                                            <option>Choose option</option>
+                                                            <option>Option one</option>
+                                                            <option>Option two</option>
+                                                            <option>Option three</option>
+                                                            <option>Option four</option>
+                                                            <option>Option five</option>
+                                                            <option>Option six</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Input Tags</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <input id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" />
+                                                        <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                                                        Checkboxes and radios
+                                                        <br>
+                                                        <small class="text-navy">Normal Bootstrap elements</small>
+                                                    </label>
+
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" value=""> Option one. select more than one options
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" value=""> Option two. select more than one options
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios"> Option one. only select one option
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios"> Option two. only select one option
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                                                        Checkboxes and radios
+                                                        <br>
+                                                        <small class="text-navy">Normal Bootstrap elements</small>
+                                                    </label>
+
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="flat" checked="checked"> Checked
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="flat"> Unchecked
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="flat" disabled="disabled"> Disabled
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="flat" disabled="disabled" checked="checked"> Disabled & checked
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" class="flat" checked name="iCheck"> Checked
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" class="flat" name="iCheck"> Unchecked
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" class="flat" name="iCheck" disabled="disabled"> Disabled
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" class="flat" name="iCheck3" disabled="disabled" checked> Disabled & Checked
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Switch</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                                        <div class="">
+                                                            <label>
+                                                                <input type="checkbox" class="js-switch" checked="" data-switchery="true" style="display: none;"><span class="switchery switchery-default" style="background-color: rgb(38, 185, 154); border-color: rgb(38, 185, 154); box-shadow: rgb(38, 185, 154) 0px 0px 0px 11px inset; transition: border 0.4s, box-shadow 0.4s, background-color 1.2s;"><small style="left: 12px; background-color: rgb(255, 255, 255); transition: background-color 0.4s, left 0.2s;"></small></span> Checked
+                                                            </label>
+                                                        </div>
+                                                        <div class="">
+                                                            <label>
+                                                                <input type="checkbox" class="js-switch" /> Unchecked
+                                                            </label>
+                                                        </div>
+                                                        <div class="">
+                                                            <label>
+                                                                <input type="checkbox" class="js-switch" disabled="disabled" /> Disabled
+                                                            </label>
+                                                        </div>
+                                                        <div class="">
+                                                            <label>
+                                                                <input type="checkbox" class="js-switch" disabled="disabled" checked="checked" /> Disabled Checked
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="ln_solid"></div>
+                                                <div class="form-group">
+                                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                                        <button type="button" class="btn btn-primary">Cancel</button>
+                                                        <button type="reset" class="btn btn-primary">Reset</button>
+                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+</div>
+
+        
+        @*@model PharmAssistent.Models.InventoryModel.Item
+            <h2>NewItem</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Item</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DrugGenericNameID, "DrugGenericNameID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("DrugGenericNameID", null, htmlAttributes: new { @class = "form-control" })
+                            <select name="DrugGenericNameID">
+                              <option value="1">Generic  1</option>
+                                <option value="1">Generic 2</option>
+                                <option value="1">Generic 3</option>
+                             </select>
+                            @Html.ValidationMessageFor(model => model.DrugGenericNameID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ManufacturerID, "ManufacturerID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ManufacturerID", null, htmlAttributes: new { @class = "form-control" })
+                            <select name="ManufacturerID">
+                                <option value="1">MAnufacture 1</option>
+                                <option value="1">MAnufacture 2</option>
+                                <option value="1">MAnufacture 3</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.ManufacturerID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Categeory, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Categeory, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Categeory, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AlertQty, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AlertQty, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AlertQty, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastUpdated, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LastUpdated, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastUpdated, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@

@@ -1,0 +1,85 @@
+﻿
+@model IEnumerable<PharmAssistent.Models.Employee>
+
+<div class="panel-body">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <div class="box-body">
+                    <h2>All Employees</h2>
+
+                    @using (Html.BeginForm("Search", "Employee", FormMethod.Post))
+                    {
+                        <div class="form-group">
+
+                            <div class="col-md-12"> <hr /><span class="text-success"> Search By Name : </span> @Html.TextBox("Search") <input class="btn btn-success btn-sm " type="submit" value="SEARCH" /> </div>
+                            <br /> <hr /><br />
+                        </div>
+                    }
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Employee List</div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EmpId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Gender)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.City)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DepartmentId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DepartmentName)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td contenteditable="true">
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td contenteditable="true">
+                                            @Html.DisplayFor(modelItem => item.EmpId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gender)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.City)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DepartmentId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DepartmentName)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.EmpId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.EmpId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.EmpId })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

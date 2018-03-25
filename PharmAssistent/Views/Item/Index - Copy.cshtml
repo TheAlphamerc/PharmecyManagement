@@ -1,0 +1,89 @@
+﻿@model IEnumerable<PharmAssistent.Models.InventoryModel.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel-body" style="">
+    <div class="col-md-12">
+        <h2> Item</h2>
+
+        <div class="box box-info" style="margin-top: 50px;">
+            <div class="box-header">
+                <div class="box-body">
+
+                    <table class="table table-striped" id="dtaTable">
+                        <thead class="dataTableHead">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DrugGenericNameID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ManufacturerID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Categeory)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AlertQty)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LastUpdated)
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DrugGenericNameID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ManufacturerID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Categeory)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AlertQty)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastUpdated)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                                        @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                                    </td>
+                                </tr>
+                            }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+    });
+</script>

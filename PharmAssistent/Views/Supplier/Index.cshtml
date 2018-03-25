@@ -1,0 +1,125 @@
+﻿@model IEnumerable<PharmAssistent.Models.Supplier>
+
+<div class="panel-body" style="">
+    <div class="col-md-10">
+        <div class="row alert">
+            <div class="col-md-4 " style="padding-left:80px"><h2 style="color:#555299;;font-family: inherit;"><strong>Supplier</strong>List</h2></div>
+        </div>
+        
+        <div class="box box-info" style="margin-top:0px ;margin-left: 80px;">
+            <div class="box-header">
+                <div class="box-body">
+                   
+                        <p>
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+                        <table class="table table-striped" id="dtaTable">
+                            <thead class="dataTableHead">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Contact)
+                                    </th>
+
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                             {
+                                 <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Contact)
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                        @Html.ActionLink("Details", "Detail", new { id = item.ID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                    </td>
+        </tr>
+                             }
+                             
+                        </table>
+
+
+                
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+    });
+</script>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+    </table>*@

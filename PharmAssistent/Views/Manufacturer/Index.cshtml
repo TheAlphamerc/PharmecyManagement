@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PharmAssistent.Models.InventoryModel.Manufacturer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel-body" style="">
+    <div class="col-md-6">
+        <div class="row alert">
+            <div class="col-md-4 " style="padding-left:0px"><h2 style="color:#555299;font-family: inherit;"><strong>Manu</strong>facturer</h2></div>
+        </div>
+
+        <div class="box box-info " style="margin-left: 400px;">
+            <div class="box-header">
+                <div class="box-body">
+
+                    <table class="table table-striped" id="dtaTable">
+                        <thead class="dataTableHead">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ManufacturerName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                            @foreach (var item in Model)
+                            {   <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ManufacturerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                                        @Html.ActionLink("Details", "Detail", new { id=item.ID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                                    </td>
+                                </tr>
+                            }
+
+
+                    </table>
+
+                </div>
+             
+            </div>
+        </div>
+        @Html.ActionLink("Create New Manufacturer", "Create")
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+    });
+</script>
+<style>
+    tr:nth-child(even) {
+        background: #E9E9E9;
+    }
+
+        tr:nth-child(even):hover {
+            background: #F2E5DE;
+        }
+</style>

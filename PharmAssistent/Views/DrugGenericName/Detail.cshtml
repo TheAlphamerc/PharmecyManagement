@@ -1,0 +1,50 @@
+﻿@model PharmAssistent.Models.InventoryModel.DrugGenericName
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+
+<div class="panel-body" style="">
+    <div class="col-md-4">
+        <div class="row alert">
+            <div class="col-md-4 " style="padding-left:0px"><h2 style="color:#555299;;font-family: inherit;"><strong>Generic</strong>Name</h2></div>
+        </div>
+
+        <div class="box box-info" style="margin-top:80px ;margin-left: 480px;">
+            <h3 style="margin-left: 50px;color: #605ca8;">Detail</h3>
+            <hr />
+            <div class="box-header">
+               
+                <div class="box-body" style="font-family: inherit;font-size: 20px;color: #6d68d4;">
+                    
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.GenericName) :
+                        </dt>
+
+                        <dd>
+                         @Html.DisplayFor(model => model.GenericName) 
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description) :
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,182 @@
+﻿@model PharmAssistent.Models.PurchaseModel.Purchase
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link href="~/Content/Gentella CSS/custom.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/Gentella CSS/select2.min.css" rel="stylesheet" />
+<link href="~/Content/Gentella CSS/prettify.min.css" rel="stylesheet" />
+<link href="~/Content/Gentella CSS/daterangepicker.css" rel="stylesheet" />
+<link href="~/Content/CSS/_all.css" rel="stylesheet" />
+
+
+<div class="right_col" role="main">
+
+    <div class="row"></div>
+    <div class="row  col-md-3"></div>
+
+    <div class="row col-md-6" style="margin-top:100px;">
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
+            <div class="x_panel ">
+                <div class="x_title">
+                    <h2>Edit Purchase ID : @Html.DisplayFor(model => model.PurchaseID) </h2>
+                    <h4>@ViewBag.err</h4>
+                       @ViewBag.msg
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link disabled"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <div class="form-horizontal form-label-left">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                              
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @*<div class="form-group">
+                                    @Html.LabelFor(model => model.PurchaseID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PurchaseID, new { htmlAttributes = new { @class = "form-control " } })
+                                        @Html.ValidationMessageFor(model => model.PurchaseID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SupplierID, "SupplierID", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @*@Html.DropDownList("SupplierID", null, htmlAttributes: new { @class = "form-control" })*@
+                                        @Html.EditorFor(model => model.SupplierID, new { htmlAttributes = new { @class = "form-control readonly" } })
+                                        @*<input type="text" value="@{model => model.SupplierID}" />*@
+                                        @Html.ValidationMessageFor(model => model.SupplierID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Tax, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GrandTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.GrandTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GrandTotal, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsPaid, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                          @*@Html.EditorFor(model => model.IsPaid)*@
+                                            <label style="margin-left:5px;"><input type="radio" value="true" id="Payment" name="Ispaid" class="x" />&nbsp; Paid</label>
+                                            <label style="margin-left:5px;"><input type="radio" value="false" name="Ispaid" class="x" checked />&nbsp; Credit</label>
+                                            @*<label>
+                                                <input type="radio" name="Ispaid" value="true" />Paid
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="Ispaid" value="false"  /> Credit
+                                            </label>*@
+
+                                            @Html.ValidationMessageFor(model => model.IsPaid, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LastUpdated, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.LastUpdated, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LastUpdated, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+       </div>
+     </div>
+  <div>
+ </div>
+
+
+<script src="~/Content/Gentella CSS/jquery.min.js"></script>
+<script src="~/Content/Gentella CSS/moment.min.js"></script>
+<script src="~/Content/Gentella CSS/date.js"></script>
+<script src="~/Content/Gentella CSS/daterangepicker.js"></script>
+<script src="~/Content/Scripts/jquery-2.1.4.min.js"></script>
+
+<script src="~/Content/Gentella CSS/prettify.min.js"></script>
+<script src="~/Content/Gentella CSS/custom.min.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+
+    @using System.Web.Optimization;
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/Content/images/logo.jpg" />
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+ 
+   
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+ 
+    <link href="~/Content/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/CSS/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/Content/CSS/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+    <link href="~/Content/CSS/_all-skins.min.css" rel="stylesheet" />
+    <link href="~/Content/CSS/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+
+      
+  
+
+    <!--  Datatable and Table tools -->
+
+   
+</head>
+
+
+<!--****************** BODY **********************-->
+
+
+<body class="skin-purple" style="margin-top:-50px">
+    @* loader*@
+   
+         <div class="loader" id='loadingmessage' style='display:none'>
+            <center>
+                <img class="loading-image" src="~/Content/images/477.GIF" />
+            </center>
+        </div>
+   
+    <div class="wrapper">
+        @Html.Partial("_AdminLteTopMenu")
+        <!-- Left side column. contains the logo and sidebar -->
+        @Html.Partial("_AdminLteLeftMenu")
+        <!-- Content Wrapper. Contains page content -->
+       <div class="content-wrapper" >
+                  @RenderBody()
+              <section id="mainFrame" class="content"></section>
+         </div>
+       <!-- /.content-wrapper -->
+        <footer class="main-footer no-print">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0
+            </div>
+            <strong>Copyright &copy; 2015-2016 &nbsp;<a> Avishekh Bharati</a>.</strong> All rights reserved.
+        </footer>
+    </div><!-- ./wrapper -->
+    <script src="~/Content/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/Scripts/bootstrap.min.js"></script>
+   
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    <!-- FastClick -->
+    <script src="~/Content/Scripts/fastclick.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="~/Content/Scripts/app.js"></script>
+    <script src="~/Content/Scripts/jquery.sparkline.min.js"></script>
+
+    <script src="~/Content/Scripts/jquery-jvectormap-world-mill-en.js"></script>
+
+    <script src="~/Content/Scripts/daterangepicker.js"></script>
+    <script src="~/Content/Scripts/bootstrap-timepicker.js"></script>
+    <script src="~/Content/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Content/Scripts/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/Scripts/my.js"></script>
+  
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Content/jquery.dataTables.js"></script>
+    <script src="~/Content/dataTables.bootstrap.js"></script>
+    <script src="~/Content/TableTools.js"></script>
+  
+    @Styles.Render("~/Content/Scripts")
+    @RenderSection("scripts", required: false)
+    <noscript><h3>Please, enable JavaScript.</h3></noscript>
+</body>
+</html>
+

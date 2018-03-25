@@ -1,0 +1,72 @@
+﻿@model PharmAssistent.Models.Employee
+
+
+
+<div class="panel-body">
+    <div class="col-md-8">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Create New Employee</h3>
+
+                <div class="box-body">
+                    <script src="~/Scripts/jquery-3.1.1.js"></script>
+                    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+                    <h2>Create</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="col-md-offset-2 form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <span id="nameinputhint" style="display:none;">Name</span>
+                                    <input type="text" id="nameinput" class="form-control" name="Name" placeholder="Name" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="EmpId" placeholder="EmpId" />
+                                </div>
+
+                                <div class="form-group">
+                                    @*<label class="control-label">Gender</label>*@
+                                    <select name="Gender" class="form-control">
+                                        <option value="Male">Male </option>
+                                        <option value="FeMale">Female </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="City" placeholder="City" />
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="DepartmentId" placeholder="DepartmentId" />
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="col-md-10">
+                        @if (ViewBag.msg != null)
+                        {
+                            <h3>
+                                @ViewBag.msg
+                            </h3>
+                        }
+                    </div>
+                    <div lass="col-md-10">
+                        @Html.ActionLink("Back TO List", "Index", "Department")
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

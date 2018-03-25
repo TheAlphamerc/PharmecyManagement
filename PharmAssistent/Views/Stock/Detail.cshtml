@@ -1,0 +1,95 @@
+﻿@model PharmAssistent.Models.InventoryModel.Stock
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="panel-body" style="">
+    <div class="col-md-4">
+        <h2> </h2>
+
+        <div class="box box-info" style="margin-top:80px ;margin-left: 480px;">
+            <div class="box-header">
+                <h2>Edit Item ID : @ViewBag.id </h2>
+                <hr />
+
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Item.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Item.Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Batch)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Batch)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Qty)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Qty)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CostPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CostPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SellingPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SellingPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ManufactureDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ManufactureDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Expiry)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Expiry)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PurchaseID)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PurchaseID)
+                        </dd>
+
+                    </dl>
+                </div>
+                <hr />
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

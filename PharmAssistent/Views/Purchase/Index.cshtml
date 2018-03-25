@@ -1,0 +1,127 @@
+﻿@model IEnumerable<PharmAssistent.Models.PurchaseModel.Purchase>
+
+
+<div class="panel-body" style="">
+    <div class="col-md-12">
+        <div class="row alert">
+            <div class="col-md-4 " style="padding-left:0px"><h2 style="color:#555299;;font-family: inherit;"><strong>Purchase</strong>History</h2></div>
+        </div>
+
+        <div class="box box-info" style="margin-top:5px;">
+            <div class="box-header"> <span class="fa-space-shuttleS"> @ViewBag.msg</span><span class="fa-space-shuttleS">@ViewBag.err</span>
+    <div class="box-body">
+
+        <table class="table table-striped" id="dtaTable">
+            <thead class="dataTableHead">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Supplier.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Discount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tax)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GrandTotal)
+                    </th>
+
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.LastUpdated)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @*@if(model =>model.IsPaid == 1) { }*@
+                        @Html.DisplayNameFor(model => model.IsPaid)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Supplier.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GrandTotal)
+                    </td>
+
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.LastUpdated)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.IsPaid)
+                        </td>*@
+
+                    @if (item.IsPaid == true)
+                    {
+                        <td>
+                            <span class="label-success" style="padding:6px;">Paid</span>
+                        </td>
+                    }
+                    @if (item.IsPaid == false)
+                    {
+                        <td>
+                            <span class="label-danger" style="padding:6px;">Due</span>
+                        </td>
+                    }
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { item.PurchaseID }) |
+                        @Html.ActionLink("Details", "Details", new { item.PurchaseID }) |
+                        @Html.ActionLink("Delete", "Delete", new { item.PurchaseID })
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+    });
+</script>

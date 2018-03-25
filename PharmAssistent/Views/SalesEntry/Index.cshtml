@@ -1,0 +1,135 @@
+﻿@model IEnumerable<PharmAssistent.Models.InventoryModel.Stock>
+
+@{
+    ViewBag.Title = "Sale";
+}
+
+
+
+<div class="panel-body col-md-8 " style="margin-top: 100px;">
+
+    <div class="box box-danger box-body" style="color:#605ca8;font-size: large;font-family: -webkit-body;padding:20px">
+      
+
+            <div class="">
+
+
+               
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Item</label>   <input type="text" class="form-control " readonly/>
+                    </div>
+                    <div class="col-md-2 ">
+                        <label> Qty</label>  <input type="text" class="form-control " />
+                    </div>
+                    <div class="col-md-2">
+                        <label> Rate</label>  <input type="text" class="form-control" readonly />
+                    </div>
+                    <div class="col-md-2">
+                        <label>Amount</label>  <input type="text" class="form-control "readonly />
+                    </div>
+                    <div class="col-md-2">
+                      <input type="submit" value="Add to List" class="btn btn-info " style="margin-top: 29px;" />
+                       
+                    </div>
+                    </div>
+                <hr />
+              <div class="row">
+                  <table class="table table-striped " id="dtaTable">
+                      <thead class="dataTableHead">
+                          <tr>
+                              <th>
+                                Stock ID
+                              </th>
+                              <th>
+                                  @Html.DisplayNameFor(model => model.Item.Name)
+                              </th>
+                            
+                              <th>
+                                  @Html.DisplayNameFor(model => model.Item.DrugGenericName.GenericName)
+                              </th>
+                              <th>
+                                  @Html.DisplayNameFor(model => model.Qty)
+                              </th>
+                             
+                              <th>
+                                 Rate
+                              </th>
+
+                              <th>
+                                  @Html.DisplayNameFor(model => model.Expiry)
+                              </th>
+                        
+                          </tr>
+                      </thead>
+
+                      @foreach (var item in Model)
+                      {
+                          <tr class="trtable"> 
+                              <td>
+                                  @Html.DisplayFor(modelItem => item.ID)
+                              </td>
+                              
+                              <td>
+                                  @Html.DisplayFor(modelItem => item.Item.Name)
+                              </td>
+
+                              <td>
+                                  @Html.DisplayFor(modelItem => item.Item.DrugGenericName.GenericName)
+                              </td>
+                             
+                              <td>
+                                  @Html.DisplayFor(modelItem => item.Qty)
+                              </td>
+                            
+                              <td>
+                                  @Html.DisplayFor(modelItem => item.SellingPrice)
+                              </td>
+
+                              <td>
+                                  @Html.DisplayFor(modelItem => item.Expiry)
+                              </td>
+                         
+                          </tr>
+                      }
+
+
+                  </table>
+              </div>
+
+               
+            </div>
+      
+
+       
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+    });
+    $(this).click(function () {
+        var v = $(this).children("td").text(sda);
+        alert(v);
+        
+    });
+
+</script>
+<style>
+   .trtable:hover{
+        background:#847EAA!important;
+        color:white;
+        cursor:pointer;
+       
+    }
+</style>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
